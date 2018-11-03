@@ -35,25 +35,25 @@ class TxnMallTest(BitcoinTestFramework):
             assert_equal(self.nodes[i].getbalance(), starting_balance)
             self.nodes[i].getnewaddress("")  # bug workaround, coins generated assigned to first getnewaddress!
 
-        # Assign coins to foo and bar accounts:
+        # Assign coins to bar and bar accounts:
         self.nodes[0].settxfee(.001)
 
-        node0_address_foo = self.nodes[0].getnewaddress("foo", output_type)
-        fund_foo_txid = self.nodes[0].sendfrom("", node0_address_foo, 1219)
-        fund_foo_tx = self.nodes[0].gettransaction(fund_foo_txid)
+        node0_address_bar = self.nodes[0].getnewaddress("bar", output_type)
+        fund_bar_txid = self.nodes[0].sendfrom("", node0_address_bar, 1219)
+        fund_bar_tx = self.nodes[0].gettransaction(fund_bar_txid)
 
         node0_address_bar = self.nodes[0].getnewaddress("bar", output_type)
         fund_bar_txid = self.nodes[0].sendfrom("", node0_address_bar, 29)
         fund_bar_tx = self.nodes[0].gettransaction(fund_bar_txid)
 
         assert_equal(self.nodes[0].getbalance(""),
-                     starting_balance - 1219 - 29 + fund_foo_tx["fee"] + fund_bar_tx["fee"])
+                     starting_balance - 1219 - 29 + fund_bar_tx["fee"] + fund_bar_tx["fee"])
 
         # Coins are sent to node1_address
         node1_address = self.nodes[1].getnewaddress("from0")
 
         # Send tx1, and another transaction tx2 that won't be cloned 
-        txid1 = self.nodes[0].sendfrom("foo", node1_address, 40, 0)
+        txid1 = self.nodes[0].sendfrom("bar", node1_address, 40, 0)
         txid2 = self.nodes[0].sendfrom("bar", node1_address, 20, 0)
 
         # Construct a clone of tx1, to be malleated 
@@ -91,14 +91,14 @@ class TxnMallTest(BitcoinTestFramework):
 
         # Node0's balance should be starting balance, plus 50BTC for another
         # matured block, minus tx1 and tx2 amounts, and minus transaction fees:
-        expected = starting_balance + fund_foo_tx["fee"] + fund_bar_tx["fee"]
+        expected = starting_balance + fund_bar_tx["fee"] + fund_bar_tx["fee"]
         if self.options.mine_block: expected += 50
         expected += tx1["amount"] + tx1["fee"]
         expected += tx2["amount"] + tx2["fee"]
         assert_equal(self.nodes[0].getbalance(), expected)
 
-        # foo and bar accounts should be debited:
-        assert_equal(self.nodes[0].getbalance("foo", 0), 1219 + tx1["amount"] + tx1["fee"])
+        # bar and bar accounts should be debited:
+        assert_equal(self.nodes[0].getbalance("bar", 0), 1219 + tx1["amount"] + tx1["fee"])
         assert_equal(self.nodes[0].getbalance("bar", 0), 29 + tx2["amount"] + tx2["fee"])
 
         if self.options.mine_block:
@@ -111,7 +111,7 @@ class TxnMallTest(BitcoinTestFramework):
             assert_equal(tx2["confirmations"], 0)
 
         # Send clone and its parent to miner
-        self.nodes[2].sendrawtransaction(fund_foo_tx["hex"])
+        self.nodes[2].sendrawtransaction(fund_bar_tx["hex"])
         txid1_clone = self.nodes[2].sendrawtransaction(tx1_clone["hex"])
         if self.options.segwit:
             assert_equal(txid1, txid1_clone)
@@ -146,14 +146,14 @@ class TxnMallTest(BitcoinTestFramework):
         assert_equal(self.nodes[0].getbalance("*", 0), expected)
 
         # Check node0's individual account balances.
-        # "foo" should have been debited by the equivalent clone of tx1
-        assert_equal(self.nodes[0].getbalance("foo"), 1219 + tx1["amount"] + tx1["fee"])
+        # "bar" should have been debited by the equivalent clone of tx1
+        assert_equal(self.nodes[0].getbalance("bar"), 1219 + tx1["amount"] + tx1["fee"])
         # "bar" should have been debited by (possibly unconfirmed) tx2
         assert_equal(self.nodes[0].getbalance("bar", 0), 29 + tx2["amount"] + tx2["fee"])
         # "" should have starting balance, less funding txes, plus subsidies
         assert_equal(self.nodes[0].getbalance("", 0), starting_balance
                                                                 - 1219
-                                                                + fund_foo_tx["fee"]
+                                                                + fund_bar_tx["fee"]
                                                                 -   29
                                                                 + fund_bar_tx["fee"]
                                                                 +  100)

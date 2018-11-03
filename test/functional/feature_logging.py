@@ -18,41 +18,41 @@ class LoggingTest(BitcoinTestFramework):
         assert os.path.isfile(os.path.join(self.nodes[0].datadir, "regtest", "debug.log"))
 
         # test alternative log file name in datadir
-        self.restart_node(0, ["-debuglogfile=foo.log"])
-        assert os.path.isfile(os.path.join(self.nodes[0].datadir, "regtest", "foo.log"))
+        self.restart_node(0, ["-debuglogfile=bar.log"])
+        assert os.path.isfile(os.path.join(self.nodes[0].datadir, "regtest", "bar.log"))
 
         # test alternative log file name outside datadir
-        tempname = os.path.join(self.options.tmpdir, "foo.log")
+        tempname = os.path.join(self.options.tmpdir, "bar.log")
         self.restart_node(0, ["-debuglogfile=%s" % tempname])
         assert os.path.isfile(tempname)
 
         # check that invalid log (relative) will cause error
-        invdir = os.path.join(self.nodes[0].datadir, "regtest", "foo")
-        invalidname = os.path.join("foo", "foo.log")
+        invdir = os.path.join(self.nodes[0].datadir, "regtest", "bar")
+        invalidname = os.path.join("bar", "bar.log")
         self.stop_node(0)
         self.assert_start_raises_init_error(0, ["-debuglogfile=%s" % (invalidname)],
                                                 "Error: Could not open debug log file")
-        assert not os.path.isfile(os.path.join(invdir, "foo.log"))
+        assert not os.path.isfile(os.path.join(invdir, "bar.log"))
 
         # check that invalid log (relative) works after path exists
         self.stop_node(0)
         os.mkdir(invdir)
         self.start_node(0, ["-debuglogfile=%s" % (invalidname)])
-        assert os.path.isfile(os.path.join(invdir, "foo.log"))
+        assert os.path.isfile(os.path.join(invdir, "bar.log"))
 
         # check that invalid log (absolute) will cause error
         self.stop_node(0)
-        invdir = os.path.join(self.options.tmpdir, "foo")
-        invalidname = os.path.join(invdir, "foo.log")
+        invdir = os.path.join(self.options.tmpdir, "bar")
+        invalidname = os.path.join(invdir, "bar.log")
         self.assert_start_raises_init_error(0, ["-debuglogfile=%s" % invalidname],
                                                "Error: Could not open debug log file")
-        assert not os.path.isfile(os.path.join(invdir, "foo.log"))
+        assert not os.path.isfile(os.path.join(invdir, "bar.log"))
 
         # check that invalid log (absolute) works after path exists
         self.stop_node(0)
         os.mkdir(invdir)
         self.start_node(0, ["-debuglogfile=%s" % (invalidname)])
-        assert os.path.isfile(os.path.join(invdir, "foo.log"))
+        assert os.path.isfile(os.path.join(invdir, "bar.log"))
 
 
 if __name__ == '__main__':

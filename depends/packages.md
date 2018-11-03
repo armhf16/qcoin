@@ -4,7 +4,7 @@ variables, and defining build commands.
 The package "mylib" will be used here as an example
 
 General tips:
-- mylib_foo is written as $(package)_foo in order to make recipes more similar.
+- mylib_bar is written as $(package)_bar in order to make recipes more similar.
 
 ## Identifiers
 Each package is required to define at least these variables:

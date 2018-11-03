@@ -420,7 +420,7 @@ namespace cxx11
   namespace test_template_alias_sfinae
   {
 
-    struct foo {};
+    struct bar {};
 
     template<typename T>
     using member = typename T::member_type;
@@ -433,7 +433,7 @@ namespace cxx11
 
     void test();
 
-    void test() { func<foo>(0); }
+    void test() { func<bar>(0); }
 
   }
 

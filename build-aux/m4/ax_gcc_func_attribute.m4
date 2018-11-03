@@ -83,126 +83,126 @@ AC_DEFUN([AX_GCC_FUNC_ATTRIBUTE], [
         AC_LINK_IFELSE([AC_LANG_PROGRAM([
             m4_case([$1],
                 [alias], [
-                    int foo( void ) { return 0; }
-                    int bar( void ) __attribute__(($1("foo")));
+                    int bar( void ) { return 0; }
+                    int bar( void ) __attribute__(($1("bar")));
                 ],
                 [aligned], [
-                    int foo( void ) __attribute__(($1(32)));
+                    int bar( void ) __attribute__(($1(32)));
                 ],
                 [alloc_size], [
-                    void *foo(int a) __attribute__(($1(1)));
+                    void *bar(int a) __attribute__(($1(1)));
                 ],
                 [always_inline], [
-                    inline __attribute__(($1)) int foo( void ) { return 0; }
+                    inline __attribute__(($1)) int bar( void ) { return 0; }
                 ],
                 [artificial], [
-                    inline __attribute__(($1)) int foo( void ) { return 0; }
+                    inline __attribute__(($1)) int bar( void ) { return 0; }
                 ],
                 [cold], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [const], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [constructor_priority], [
-                    int foo( void ) __attribute__((__constructor__(65535/2)));
+                    int bar( void ) __attribute__((__constructor__(65535/2)));
                 ],
                 [constructor], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [deprecated], [
-                    int foo( void ) __attribute__(($1("")));
+                    int bar( void ) __attribute__(($1("")));
                 ],
                 [destructor], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [dllexport], [
-                    __attribute__(($1)) int foo( void ) { return 0; }
+                    __attribute__(($1)) int bar( void ) { return 0; }
                 ],
                 [dllimport], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [error], [
-                    int foo( void ) __attribute__(($1("")));
+                    int bar( void ) __attribute__(($1("")));
                 ],
                 [externally_visible], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [flatten], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [format], [
-                    int foo(const char *p, ...) __attribute__(($1(printf, 1, 2)));
+                    int bar(const char *p, ...) __attribute__(($1(printf, 1, 2)));
                 ],
                 [format_arg], [
-                    char *foo(const char *p) __attribute__(($1(1)));
+                    char *bar(const char *p) __attribute__(($1(1)));
                 ],
                 [gnu_inline], [
-                    inline __attribute__(($1)) int foo( void ) { return 0; }
+                    inline __attribute__(($1)) int bar( void ) { return 0; }
                 ],
                 [hot], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [ifunc], [
-                    int my_foo( void ) { return 0; }
-                    static int (*resolve_foo(void))(void) { return my_foo; }
-                    int foo( void ) __attribute__(($1("resolve_foo")));
+                    int my_bar( void ) { return 0; }
+                    static int (*resolve_bar(void))(void) { return my_bar; }
+                    int bar( void ) __attribute__(($1("resolve_bar")));
                 ],
                 [leaf], [
-                    __attribute__(($1)) int foo( void ) { return 0; }
+                    __attribute__(($1)) int bar( void ) { return 0; }
                 ],
                 [malloc], [
-                    void *foo( void ) __attribute__(($1));
+                    void *bar( void ) __attribute__(($1));
                 ],
                 [noclone], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [noinline], [
-                    __attribute__(($1)) int foo( void ) { return 0; }
+                    __attribute__(($1)) int bar( void ) { return 0; }
                 ],
                 [nonnull], [
-                    int foo(char *p) __attribute__(($1(1)));
+                    int bar(char *p) __attribute__(($1(1)));
                 ],
                 [noreturn], [
-                    void foo( void ) __attribute__(($1));
+                    void bar( void ) __attribute__(($1));
                 ],
                 [nothrow], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [optimize], [
-                    __attribute__(($1(3))) int foo( void ) { return 0; }
+                    __attribute__(($1(3))) int bar( void ) { return 0; }
                 ],
                 [pure], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [unused], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [used], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [visibility], [
-                    int foo_def( void ) __attribute__(($1("default")));
-                    int foo_hid( void ) __attribute__(($1("hidden")));
-                    int foo_int( void ) __attribute__(($1("internal")));
-                    int foo_pro( void ) __attribute__(($1("protected")));
+                    int bar_def( void ) __attribute__(($1("default")));
+                    int bar_hid( void ) __attribute__(($1("hidden")));
+                    int bar_int( void ) __attribute__(($1("internal")));
+                    int bar_pro( void ) __attribute__(($1("protected")));
                 ],
                 [warning], [
-                    int foo( void ) __attribute__(($1("")));
+                    int bar( void ) __attribute__(($1("")));
                 ],
                 [warn_unused_result], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [weak], [
-                    int foo( void ) __attribute__(($1));
+                    int bar( void ) __attribute__(($1));
                 ],
                 [weakref], [
-                    static int foo( void ) { return 0; }
-                    static int bar( void ) __attribute__(($1("foo")));
+                    static int bar( void ) { return 0; }
+                    static int bar( void ) __attribute__(($1("bar")));
                 ],
                 [
                  m4_warn([syntax], [Unsupported attribute $1, the test may fail])
-                 int foo( void ) __attribute__(($1));
+                 int bar( void ) __attribute__(($1));
                 ]
             )], [])
             ],

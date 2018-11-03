@@ -1120,7 +1120,7 @@ HTML_FILE_EXTENSION    = .html
 # that doxygen needs, which is dependent on the configuration options used (e.g.
 # the setting GENERATE_TREEVIEW). It is highly recommended to start with a
 # default header using
-# doxygen -w html new_header.html new_footer.html new_stylesheet.css
+# doxygen -w html new_header.html new_barter.html new_stylesheet.css
 # YourConfigFile
 # and then modify the file new_header.html. See also section "Doxygen usage"
 # for information on how to generate the default header that doxygen normally
@@ -1132,11 +1132,11 @@ HTML_FILE_EXTENSION    = .html
 
 HTML_HEADER            =
 
-# The HTML_FOOTER tag can be used to specify a user-defined HTML footer for each
+# The HTML_FOOTER tag can be used to specify a user-defined HTML barter for each
 # generated HTML page. If the tag is left blank doxygen will generate a standard
-# footer. See HTML_HEADER for more information on how to generate a default
-# footer and what special commands can be used inside the footer. See also
-# section "Doxygen usage" for information on how to generate the default footer
+# barter. See HTML_HEADER for more information on how to generate a default
+# barter and what special commands can be used inside the barter. See also
+# section "Doxygen usage" for information on how to generate the default barter
 # that doxygen normally uses.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
@@ -1207,7 +1207,7 @@ HTML_COLORSTYLE_SAT    = 100
 
 HTML_COLORSTYLE_GAMMA  = 80
 
-# If the HTML_TIMESTAMP tag is set to YES then the footer of each generated HTML
+# If the HTML_TIMESTAMP tag is set to YES then the barter of each generated HTML
 # page will contain the date and time when the page was generated. Setting this
 # to YES can help to show when doxygen was last run and thus if the
 # documentation is up to date.
@@ -1712,13 +1712,13 @@ EXTRA_PACKAGES         =
 
 LATEX_HEADER           =
 
-# The LATEX_FOOTER tag can be used to specify a personal LaTeX footer for the
-# generated LaTeX document. The footer should contain everything after the last
-# chapter. If it is left blank doxygen will generate a standard footer. See
-# LATEX_HEADER for more information on how to generate a default footer and what
-# special commands can be used inside the footer.
+# The LATEX_FOOTER tag can be used to specify a personal LaTeX barter for the
+# generated LaTeX document. The barter should contain everything after the last
+# chapter. If it is left blank doxygen will generate a standard barter. See
+# LATEX_HEADER for more information on how to generate a default barter and what
+# special commands can be used inside the barter.
 #
-# Note: Only use a user-defined footer if you know what you are doing!
+# Note: Only use a user-defined barter if you know what you are doing!
 # This tag requires that the tag GENERATE_LATEX is set to YES.
 
 LATEX_FOOTER           =
@@ -1793,7 +1793,7 @@ LATEX_SOURCE_CODE      = NO
 
 LATEX_BIB_STYLE        = plain
 
-# If the LATEX_TIMESTAMP tag is set to YES then the footer of each generated
+# If the LATEX_TIMESTAMP tag is set to YES then the barter of each generated
 # page will contain the date and time when the page was generated. Setting this
 # to NO can help when comparing the output of multiple runs.
 # The default value is: NO.

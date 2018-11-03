@@ -155,7 +155,7 @@ class FrameworkInfo(object):
 class ApplicationBundleInfo(object):
     def __init__(self, path):
         self.path = path
-        appName = "Litecoin-Qt"
+        appName = "Qcoin-Qt"
         self.binaryPath = os.path.join(path, "Contents", "MacOS", appName)
         if not os.path.exists(self.binaryPath):
             raise RuntimeError("Could not find bundle binary for " + path)
@@ -482,7 +482,7 @@ Optionally, Qt translation files (.qm) and additional resources can be added to 
 
 Also optionally signs the .app bundle; set the CODESIGNARGS environment variable to pass arguments
 to the codesign tool.
-E.g. CODESIGNARGS='--sign "Developer ID Application: ..." --keychain /encrypted/foo.keychain'""")
+E.g. CODESIGNARGS='--sign "Developer ID Application: ..." --keychain /encrypted/bar.keychain'""")
 
 ap.add_argument("app_bundle", nargs=1, metavar="app-bundle", help="application bundle to be deployed")
 ap.add_argument("-verbose", type=int, nargs=1, default=[1], metavar="<0-3>", help="0 = no output, 1 = error/warning (default), 2 = normal, 3 = debug")
@@ -603,7 +603,7 @@ else:
 
 # ------------------------------------------------
 
-target = os.path.join("dist", "Litecoin-Qt.app")
+target = os.path.join("dist", "Qcoin-Qt.app")
 
 if verbose >= 2:
     print("+ Copying source bundle +")

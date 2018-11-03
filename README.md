@@ -2,7 +2,7 @@
 
 ## What is Qcoin?
 
-Qcoin is just a fun fork form Litecoin
+Qcoin is just a fun fork form Qcoin
 
 ## Specifications
 

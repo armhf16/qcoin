@@ -72,7 +72,7 @@ AC_DEFUN([AX_BOOST_FILESYSTEM],
         [AC_LANG_PUSH([C++])
          AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[@%:@include <boost/filesystem/path.hpp>]],
                                    [[using namespace boost::filesystem;
-                                   path my_path( "foo/bar/data.txt" );
+                                   path my_path( "bar/bar/data.txt" );
                                    return 0;]])],
 					       ax_cv_boost_filesystem=yes, ax_cv_boost_filesystem=no)
          AC_LANG_POP([C++])

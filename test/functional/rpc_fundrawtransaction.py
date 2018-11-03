@@ -179,7 +179,7 @@ class RawTransactionsTest(BitcoinTestFramework):
         dec_tx  = self.nodes[2].decoderawtransaction(rawtx)
         assert_equal(utx['txid'], dec_tx['vin'][0]['txid'])
 
-        assert_raises_rpc_error(-3, "Unexpected key foo", self.nodes[2].fundrawtransaction, rawtx, {'foo':'bar'})
+        assert_raises_rpc_error(-3, "Unexpected key bar", self.nodes[2].fundrawtransaction, rawtx, {'bar':'bar'})
 
         ############################################################
         # test a fundrawtransaction with an invalid change address #
@@ -192,7 +192,7 @@ class RawTransactionsTest(BitcoinTestFramework):
         dec_tx  = self.nodes[2].decoderawtransaction(rawtx)
         assert_equal(utx['txid'], dec_tx['vin'][0]['txid'])
 
-        assert_raises_rpc_error(-5, "changeAddress must be a valid litecoin address", self.nodes[2].fundrawtransaction, rawtx, {'changeAddress':'foobar'})
+        assert_raises_rpc_error(-5, "changeAddress must be a valid qcoin address", self.nodes[2].fundrawtransaction, rawtx, {'changeAddress':'barbar'})
 
         ############################################################
         # test a fundrawtransaction with a provided change address #
