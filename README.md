@@ -6,10 +6,10 @@ Qcoin is just a fun fork form Litecoin
 
 ## Specifications
 
-Symbol: QCN
-Blocktime: 1 minute
-Difficulty Retarget: every 1440 blocks
-P2P-Port: 4040
+Symbol: QCN  
+Blocktime: 1 minute  
+Difficulty retarget: every 1440 blocks  
+P2P-Port: 4040  
 RPC-Port: 4041
 
 ## Building
