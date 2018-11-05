@@ -9,6 +9,8 @@ src/test/test_qcoin
 src/test/test_qcoin_fuzzy
 src/qt/test/test_qcoin-qt
 
+.vscode/
+
 # autoreconf
 Makefile.in
 aclocal.m4
