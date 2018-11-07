@@ -174,13 +174,14 @@ public:
             }*/
         };
 
-        //chainTxData = ChainTxData{
+        chainTxData = ChainTxData{
             /*// Data as of block 59c9b9d3fec105bdc716d84caa7579503d5b05b73618d0bf2d5fa639f780a011 (height 1353397).
             1516406833, // * UNIX timestamp of last known number of transactions
             19831879,  // * total number of transactions between genesis and that timestamp
                     //   (the tx=... number in the SetBestChain debug.log lines)
             0.06*/     // * estimated number of transactions per second after that timestamp
-        //};
+            0, 0, 0
+        };
     }
 };
 
@@ -268,12 +269,13 @@ public:
             }
         };
 
-        /*chainTxData = ChainTxData{
+        chainTxData = ChainTxData{
             // Data as of block a0afbded94d4be233e191525dc2d467af5c7eab3143c852c3cd549831022aad6 (height 343833)
-            1516406749,
+            /*1516406749,
             794057,
-            0.01
-        };*/
+            0.01*/
+            0, 0, 0
+        };
 
     }
 };
@@ -321,10 +323,10 @@ public:
         nDefaultPort = 19444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1296688602, 0, 0x207fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1541346164, 1572451, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"));
-        assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        assert(consensus.hashGenesisBlock == uint256S("0xb38213bddabadee1ebbcf7ddeca2a59d44a329cadf1af9bef8f0893d68ef39f8"));
+        assert(genesis.hashMerkleRoot == uint256S("0xe21f31cb9b8d063bc177d3ef26394bffc1eeb326c053aa0dcbdc868d0b263a0b"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
